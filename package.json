@@ -4,7 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "rune2e": "pnpm exec playwright test"
+    "e2e": "pnpm exec playwright test",
+    "e2e:pr": "cross-env RUN_PROFILE=pr pnpm exec playwright test",
+    "e2e:nightly": "cross-env RUN_PROFILE=nightly pnpm exec playwright test",
+    "e2e:release": "cross-env RUN_PROFILE=release pnpm exec playwright test",
+    "e2e:ui:smoke": "cross-env RUN_PROFILE=pr pnpm exec playwright test tests/ui/smoke",
+    "e2e:ui:regression": "cross-env RUN_PROFILE=nightly pnpm exec playwright test tests/ui/regression",
+    "e2e:api:smoke": "cross-env RUN_PROFILE=pr pnpm exec playwright test tests/api/smoke",
+    "e2e:api:contract": "cross-env RUN_PROFILE=pr pnpm exec playwright test tests/api/contract",
+    "e2e:api:integration": "cross-env RUN_PROFILE=nightly pnpm exec playwright test tests/api/integration",
+    "e2e:headed": "cross-env HEADLESS=false pnpm exec playwright test",
+    "e2e:debug": "cross-env PWDEBUG=1 pnpm exec playwright test",
+    "e2e:report": "pnpm exec playwright show-report"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +23,9 @@
   "packageManager": "pnpm@10.26.2",
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/node": "^25.0.3"
+    "@types/node": "^25.0.3",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "zod": "^4.2.1"
   }
 }
